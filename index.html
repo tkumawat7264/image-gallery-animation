@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="image-grid">
+      <div class="image-container" onclick="toggleImageSize(this ,0)">
+        <img class="" src="./assets/image1.jpg" alt="architecture" />
+      </div>
+      <div class="image-container" onclick="toggleImageSize(this , 1)">
+        <img class="" src="./assets/image2.jpg" alt="architecture" />
+      </div>
+      <div class="image-container" onclick="toggleImageSize(this ,2)">
+        <img class="" src="./assets/image3.jpg" alt="architecture" />
+      </div>
+      <div class="image-container" onclick="toggleImageSize(this,3)">
+        <img class="" src="./assets/image1.jpg" alt="architecture" />
+      </div>
+      <div class="image-container" onclick="toggleImageSize(this , 4)">
+        <img class="" src="./assets/image5.jpg" alt="architecture" />
+      </div>
+    </div>
+    <script>
+      function toggleImageSize(element, index) {
+        // Check if the clicked image is already enlarged
+        const isEnlarged = element.classList.contains('image-grid-row-2')
+
+        // Remove 'enlarged' class from all images
+        document.querySelectorAll('.image-container').forEach((item, ind) => {
+          item.classList.remove('image-grid-row-2')
+          item.classList.remove('image-grid-col-3')
+          item.classList.remove(`order-${ind}`)
+        })
+
+        // If the clicked image is not enlarged, enlarge it; otherwise, remove 'enlarged' class
+        if (!isEnlarged) {
+          element.classList.add('image-grid-row-2')
+          element.classList.add('image-grid-col-3')
+          if (index === 3 || index === 4) {
+            element.classList.add(`order-${index}`)
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
